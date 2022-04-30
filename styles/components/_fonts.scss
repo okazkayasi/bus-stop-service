@@ -1,0 +1,87 @@
+@layer base {
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Black.ttf");
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-ExtraBold.ttf");
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-ExtraLight.ttf");
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Light.ttf");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Medium.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lexend Mega";
+    src: url("/fonts/Lexend_Mega/LexendMega-Thin.ttf");
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Noir No 1";
+    src: url("/fonts/Noir_No_1/NoirNo1.otf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Noir No 1";
+    src: url("/fonts/Noir_No_1/NoirNo1-Demibold.otf");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Noir No 1";
+    src: url("/fonts/Noir_No_1/NoirNo1-Light.otf");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+  }
+}

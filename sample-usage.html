@@ -1,0 +1,19 @@
+<html><body>
+	<script type="text/javascript" src="BusStopService.js"></script>
+	<script type="text/javascript">
+		// example usage, without any error handling
+		var service = new BusStopService();
+
+		// get all stops
+		var stops = service.getAllStops();
+		var firstStop = stops[0];
+		console.log(firstStop);
+
+		// to add a $100 donation to a stop
+		service.addDonation(firstStop.stopId, 100);
+
+		// check that donation has taken effect:
+		var updatedFirstStop = service.getAllStops()[0];
+		console.log(updatedFirstStop);
+	</script>
+</body></html>
