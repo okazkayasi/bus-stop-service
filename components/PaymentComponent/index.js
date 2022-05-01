@@ -60,24 +60,22 @@ const PaymentComponent = ({ sendDonation }) => {
       alert("Please enter a valid expiry date");
       return;
     }
-    const expiry_month = expiry.substring(0, 2);
-    const expiry_year = expiry.substring(3, 5);
+    const expiryMonth = expiry.substring(0, 2);
+    const expiryYear = expiry.substring(3, 5);
 
-    const expiry_date = new Date(
-      `20${expiry_year}-${expiry_month}-01`,
-    ).getTime();
+    const expiryDate = new Date(`20${expiryYear}-${expiryMonth}-01`).getTime();
 
-    if (isNaN(expiry_date)) {
+    if (isNaN(expiryDate)) {
       alert("Please enter a valid expiry date");
       return;
     }
     const today = new Date().getTime();
-    if (expiry_date < today) {
+    if (expiryDate < today) {
       alert("Please enter a valid expiry date");
       return;
     }
-    const current_date = new Date();
-    if (expiry_date < current_date) {
+    const currentDate = new Date();
+    if (expiryDate < currentDate) {
       alert("Please enter a valid expiry date");
       return;
     }
@@ -87,7 +85,7 @@ const PaymentComponent = ({ sendDonation }) => {
       alert("Please enter a valid amount");
       return;
     }
-    sendDonation(number, cvc, expiry_date, value);
+    sendDonation(number, cvc, expiryDate, value);
     setData({
       name: "",
       email: "",

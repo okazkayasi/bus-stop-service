@@ -10,13 +10,13 @@ const DetailModule = ({ busstopData }) => {
   const [donationRaised, setDonationRaised] = useState(
     data.donationsRaisedInDollars,
   );
-  const sendDonation = (number, cvc, expiry_date, value) => {
+  const sendDonation = (number, cvc, expiryDate, value) => {
     const id = data.stopId;
     const { valueAdded, status } = donateToBusstop(
       id,
       number,
       cvc,
-      expiry_date,
+      expiryDate,
       value,
     );
     if (status === "success") {

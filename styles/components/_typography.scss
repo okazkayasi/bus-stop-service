@@ -29,24 +29,4 @@
   .subtitle {
     @apply font-lexend text-subtitle leading-lg;
   }
-
-  .title-mobile {
-    @apply font-lexend text-title-mobile leading-lg;
-  }
-
-  .body-small {
-    @apply font-noir text-body-small leading-xl;
-  }
-  .small {
-    @apply font-lexend text-small leading-lg;
-  }
-  .extra-small {
-    @apply font-lexend text-extra-small leading-lg;
-  }
-  .tiny {
-    @apply font-noir text-tiny leading-xl;
-  }
-  .headline {
-    @apply font-lexend text-headline leading-lg;
-  }
 }

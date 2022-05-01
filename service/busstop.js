@@ -63,7 +63,7 @@ export const fetchOne = (id) => {
   }
 };
 
-export const donateToBusstop = (id, number, cvc, expiry_date, value) => {
+export const donateToBusstop = (id, number, cvc, expiryDate, value) => {
   try {
     service.addDonation(id, value);
     return {
