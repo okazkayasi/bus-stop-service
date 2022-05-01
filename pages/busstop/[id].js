@@ -1,12 +1,11 @@
-import { donationGoalInDollars } from "@components/BusstopPoint";
 import Layout from "@components/Layout";
 import PaymentComponent from "@components/PaymentComponent";
+import { donationGoalInDollars } from "pages";
 import React, { useState } from "react";
 import { fetchOne, donateToBusstop } from "service/busstop";
 
 const BusStopDonate = ({ busstopData }) => {
-  console.log(busstopData, "data");
-  const { data, status, message } = busstopData;
+  const { data, status } = busstopData;
 
   const [donationRaised, setDonationRaised] = useState(
     data.donationsRaisedInDollars,

@@ -1,7 +1,11 @@
 import BusstopPoint from "@components/BusstopPoint";
+import ClickOutside from "@lib/click-outsite";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { fetchPage } from "service/busstop";
 import Layout from "../components/Layout";
+
+export const donationGoalInDollars = 700;
 
 export default function Home() {
   const [busstops, setBusstops] = useState({
@@ -10,6 +14,7 @@ export default function Home() {
     status: "initialized", // initialized, success, error
     message: "",
   });
+  const [popup, setPopup] = useState(null);
 
   const currentPage = busstops.pagination?.currentPage || 0;
 
@@ -18,7 +23,6 @@ export default function Home() {
     setBusstops(data);
   }, [currentPage]);
 
-  console.log(busstops);
   const minLat = busstops.data.reduce((min, stop) => {
     return Math.min(min, stop.lat);
   }, Infinity);
@@ -61,14 +65,15 @@ export default function Home() {
             <div className="my-8 text-center">
               <h3>Click on the busstop to donate to.</h3>
             </div>
-            <div className="h-[750px] w-[750px] p-[75px] bg-white mx-auto">
-              <div className="mx-auto relative h-full bg-white">
+            <div className="h-[750px] w-[750px] p-[75px] mx-auto bg-brown-med bg-cover">
+              <div className="mx-auto relative h-full">
                 <ul className="h-full">
                   {busstops.data.map((stop) => (
                     <BusstopPoint
                       key={stop.stopId}
                       stop={stop}
                       latLongData={latLongData}
+                      setPopup={setPopup}
                     />
                   ))}
                 </ul>
@@ -77,6 +82,35 @@ export default function Home() {
           </div>
         )}
       </div>
+      {popup && (
+        <div className="w-screen h-screen bg-black50 fixed left-0 top-0">
+          <ClickOutside
+            onClick={() => {
+              setPopup(null);
+            }}
+          >
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="rounded-md border-2 border-solid bg-black border-black w-80 p-4 flex justify-center flex-col items-center text-center">
+                <p className="text-white text-2xl">
+                  Busstop name:{busstops.data[popup].name}
+                </p>
+                <p className="text-white text-base">
+                  Donations Collected: $
+                  {busstops.data[popup].donationsRaisedInDollars} / $
+                  {donationGoalInDollars}
+                </p>
+                <Link href={`/busstop/${busstops.data[popup].stopId}`}>
+                  <a className="inline-block border-solid border-2 border-white rounded-lg text-white p-2 my-4 w-1/2">
+                    Donate
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </ClickOutside>
+        </div>
+      )}
+
+      <div></div>
     </Layout>
   );
 }
