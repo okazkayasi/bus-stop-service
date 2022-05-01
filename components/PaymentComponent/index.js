@@ -29,7 +29,6 @@ const PaymentComponent = ({ sendDonation }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data, "data");
 
     const name = data.name;
     const email = data.email;

@@ -36,7 +36,6 @@ export const fetchPage = (
     const all_stops = service.getAllStops();
     return paginate(all_stops, page, numberOfItemsInPage, searchInput);
   } catch (e) {
-    console.log(e);
     return {
       data: [],
       pagination: {},
@@ -49,16 +48,13 @@ export const fetchPage = (
 export const fetchOne = (id) => {
   try {
     const all_stops = service.getAllStops();
-    console.log(all_stops, id, "all id");
     const my_stop = all_stops.find((s) => s.stopId === parseInt(id));
-    console.log(my_stop, "my stop");
     return {
       data: my_stop,
       status: "success",
       message: "Bus stop is returned successfully.",
     };
   } catch (e) {
-    console.log(e);
     return {
       data: {},
       status: "error",
@@ -76,7 +72,6 @@ export const donateToBusstop = (id, number, cvc, expiry_date, value) => {
       valueAdded: value,
     };
   } catch (e) {
-    console.log(e);
     return {
       valueAdded: 0,
       status: "error",

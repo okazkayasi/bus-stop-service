@@ -89,7 +89,6 @@ test("Fetch one data", () => {
 
 test("Donate to bus stop", () => {
   const donate_to_busstop = donateToBusstop(1, "", "", "", 10);
-  console.log(donate_to_busstop);
   try {
     const success_data = {
       status: "success",
