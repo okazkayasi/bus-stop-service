@@ -65,7 +65,7 @@ export default function Home() {
             <div className="my-8 text-center">
               <h3>Click on the busstop to donate to.</h3>
             </div>
-            <div className="h-[750px] w-[750px] p-[75px] mx-auto bg-brown-med bg-cover">
+            <div className="h-[800px] w-[800px] p-[120px] mx-auto bg-brown-med bg-[url('/map.png')] bg-cover">
               <div className="mx-auto relative h-full">
                 <ul className="h-full">
                   {busstops.data.map((stop) => (
@@ -109,8 +109,6 @@ export default function Home() {
           </ClickOutside>
         </div>
       )}
-
-      <div></div>
     </Layout>
   );
 }
