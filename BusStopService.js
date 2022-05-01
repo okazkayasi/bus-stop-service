@@ -20,7 +20,6 @@ export function BusStopService()
 	this.getAllStops = function ()
 	{
 		randomlyFailWith('Unable to read database');
-		console.log(stops, 'stops')
 		return clone(stops);
 	}
 
@@ -84,7 +83,7 @@ export function BusStopService()
 
 	function randomlyFailWith(errorMessage)
 	{
-		if ((Math.random() * 100) > 50.0)
+		if ((Math.random() * 100) > 80.0)
 		{
 			throw new Error(errorMessage);
 		}
