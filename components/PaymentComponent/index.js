@@ -9,15 +9,17 @@ const validateEmail = (email) => {
     );
 };
 
+const initialData = {
+  name: "",
+  email: "",
+  number: "",
+  cvc: "",
+  expiry: "",
+  amount: 0,
+};
+
 const PaymentComponent = ({ sendDonation }) => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    cvc: "",
-    expiry: "",
-    amount: 0,
-  });
+  const [data, setData] = useState(initialData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +31,6 @@ const PaymentComponent = ({ sendDonation }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const name = data.name;
     const email = data.email;
     if (name === "") {
@@ -62,7 +63,6 @@ const PaymentComponent = ({ sendDonation }) => {
     }
     const expiryMonth = expiry.substring(0, 2);
     const expiryYear = expiry.substring(3, 5);
-
     const expiryDate = new Date(`20${expiryYear}-${expiryMonth}-01`).getTime();
 
     if (isNaN(expiryDate)) {
@@ -86,14 +86,7 @@ const PaymentComponent = ({ sendDonation }) => {
       return;
     }
     sendDonation(number, cvc, expiryDate, value);
-    setData({
-      name: "",
-      email: "",
-      number: "",
-      cvc: "",
-      expiry: "",
-      amount: 0,
-    });
+    setData(initialData);
   };
 
   return (
