@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
+};
+
 const PaymentComponent = ({ sendDonation }) => {
   const [data, setData] = useState({
+    name: "",
+    email: "",
     number: "",
     cvc: "",
     expiry: "",
@@ -20,6 +30,21 @@ const PaymentComponent = ({ sendDonation }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(data, "data");
+
+    const name = data.name;
+    const email = data.email;
+    if (name === "") {
+      alert("Name is required");
+      return;
+    }
+
+    if (email) {
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email");
+        return;
+      }
+    }
+
     // check number
     const number = data.number.replace(/\s/g, "");
     if (number.length < 16) {
@@ -64,6 +89,14 @@ const PaymentComponent = ({ sendDonation }) => {
       return;
     }
     sendDonation(number, cvc, expiry_date, value);
+    setData({
+      name: "",
+      email: "",
+      number: "",
+      cvc: "",
+      expiry: "",
+      amount: 0,
+    });
   };
 
   return (
@@ -76,7 +109,32 @@ const PaymentComponent = ({ sendDonation }) => {
           <form role="form">
             <div className="relative my-6">
               <div>
-                <label className="subtitle">Card Number</label>
+                <label className="subtitle mb-1 inline-block">Name</label>
+                <input
+                  className="payment-input"
+                  type="text"
+                  name="name"
+                  value={data.name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mt-6">
+                <label className="subtitle mb-1 inline-block">
+                  Email (optional)
+                </label>
+                <InputMask
+                  type="email"
+                  name="email"
+                  value={data.email}
+                  onChange={handleChange}
+                  className="payment-input"
+                />
+              </div>
+
+              <div className="mt-6">
+                <label className="subtitle mb-1 inline-block">
+                  Card Number
+                </label>
                 <InputMask
                   mask="9999 9999 9999 9999"
                   maskChar=" "
@@ -90,7 +148,7 @@ const PaymentComponent = ({ sendDonation }) => {
               </div>
               <div className="flex mt-6 gap-x-2">
                 <div>
-                  <label className="subtitle">CVC</label>
+                  <label className="subtitle mb-1 inline-block">CVC</label>
                   <InputMask
                     mask="999"
                     maskChar=" "
@@ -103,7 +161,9 @@ const PaymentComponent = ({ sendDonation }) => {
                   />
                 </div>
                 <div>
-                  <label className="subtitle">Expiry Date</label>
+                  <label className="subtitle mb-1 inline-block">
+                    Expiry Date
+                  </label>
                   <InputMask
                     mask="99/99"
                     maskChar=" "
@@ -117,7 +177,9 @@ const PaymentComponent = ({ sendDonation }) => {
                 </div>
               </div>
               <div className="mt-6">
-                <label className="subtitle">Donation Amount</label>
+                <label className="subtitle mb-1 inline-block">
+                  Donation Amount
+                </label>
                 <InputMask
                   placeholder="$10"
                   maskChar=" "

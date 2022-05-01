@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="pb-16">
-        <div className="py-6 w-1/2 mx-auto">
+        <div className="py-6 mx-auto">
           <h1 className="h1 text-center mb-8">
             Contribute to Your Local Busstop
           </h1>
@@ -50,22 +50,32 @@ export default function Home() {
             Find the busstop you want to contribute in the map.
           </p>
         </div>
-        <div className="my-8 text-center">
-          <h3>Click on the busstop to donate to.</h3>
-        </div>
-        <div className="h-[750px] w-[750px] p-[75px] bg-white mx-auto">
-          <div className="mx-auto relative h-full bg-white">
-            <ul className="h-full">
-              {busstops.data.map((stop) => (
-                <BusstopPoint
-                  key={stop.stopId}
-                  stop={stop}
-                  latLongData={latLongData}
-                />
-              ))}
-            </ul>
+        {busstops.status === "error" ? (
+          <div>
+            <h1 className="h2 text-center">
+              We&apos;re having a problem currently, please try again later.
+            </h1>
           </div>
-        </div>
+        ) : (
+          <div>
+            <div className="my-8 text-center">
+              <h3>Click on the busstop to donate to.</h3>
+            </div>
+            <div className="h-[750px] w-[750px] p-[75px] bg-white mx-auto">
+              <div className="mx-auto relative h-full bg-white">
+                <ul className="h-full">
+                  {busstops.data.map((stop) => (
+                    <BusstopPoint
+                      key={stop.stopId}
+                      stop={stop}
+                      latLongData={latLongData}
+                    />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </Layout>
   );

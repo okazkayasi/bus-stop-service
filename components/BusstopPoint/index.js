@@ -21,7 +21,7 @@ const BusstopPoint = ({ stop, latLongData }) => {
         top: `${(100 * (stop.lng - minLng)) / (maxLng - minLng)}%`,
       }}
     >
-      <p className="my-3 ml-3 w-60 z-10 relative">{stop.name}</p>
+      <p className="my-3 ml-3 w-60 relative">{stop.name}</p>
       {tooltipOn && (
         <ClickOutside
           onClick={() => {

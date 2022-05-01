@@ -13,18 +13,32 @@ const BusStopDonate = ({ busstopData }) => {
   );
   const sendDonation = (number, cvc, expiry_date, value) => {
     const id = data.stopId;
-    const {
-      valueAdded,
-      status,
-      message: messageReturned,
-    } = donateToBusstop(id, number, cvc, expiry_date, value);
+    const { valueAdded, status } = donateToBusstop(
+      id,
+      number,
+      cvc,
+      expiry_date,
+      value,
+    );
     if (status === "success") {
       setDonationRaised(donationRaised + valueAdded);
       alert("Donation is added successfully.");
     } else if (status === "error") {
-      alert(messageReturned);
+      alert("We couldn't process your payment. Please try again later.");
     }
   };
+
+  if (status === "error") {
+    return (
+      <Layout>
+        <div className="pt-12">
+          <h1 className="h2 text-center">
+            We&apos;re having a problem currently, please try again later.
+          </h1>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

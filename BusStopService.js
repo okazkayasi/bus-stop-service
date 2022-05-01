@@ -20,7 +20,7 @@ export function BusStopService()
 	this.getAllStops = function ()
 	{
 		randomlyFailWith('Unable to read database');
-
+		console.log(stops, 'stops')
 		return clone(stops);
 	}
 
