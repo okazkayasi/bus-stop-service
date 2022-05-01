@@ -61,6 +61,10 @@ module.exports = {
       h4: ["25px"],
       h1: ["45px"],
     },
+    lineHeight: {
+      lg: "120%",
+      xl: "150%",
+    },
   },
   plugins: [],
 };
