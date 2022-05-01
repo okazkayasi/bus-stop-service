@@ -66,3 +66,21 @@ export const fetchOne = (id) => {
     };
   }
 };
+
+export const donateToBusstop = (id, number, cvc, expiry_date, value) => {
+  try {
+    service.addDonation(id, value);
+    return {
+      status: "success",
+      message: "Donation is added successfully.",
+      valueAdded: value,
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      valueAdded: 0,
+      status: "error",
+      message: e.message,
+    };
+  }
+};

@@ -8,3 +8,12 @@
 h1 {
   font-size: 100px;
 }
+
+@layer components {
+  .payment-input {
+    @apply border rounded-lg block w-full pl-4 p-2.5;
+  }
+  .btn {
+    @apply bg-black text-white rounded-lg px-4 py-2.5;
+  }
+}
