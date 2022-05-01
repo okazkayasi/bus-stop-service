@@ -66,12 +66,12 @@ const PaymentComponent = ({ sendDonation }) => {
     const expiryDate = new Date(`20${expiryYear}-${expiryMonth}-01`).getTime();
 
     if (isNaN(expiryDate)) {
-      alert("Please enter a valid expiry date");
+      alert("Please enter a valid expiry date in MM/YY format.");
       return;
     }
     const today = new Date().getTime();
     if (expiryDate < today) {
-      alert("Please enter a valid expiry date");
+      alert("Expiration date must be in the future");
       return;
     }
     const currentDate = new Date();
