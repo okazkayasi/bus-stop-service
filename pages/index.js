@@ -1,4 +1,4 @@
-import HomeModule from "@components/HomeModule";
+import HomeModule from "../components/HomeModule";
 import React from "react";
 import Layout from "../components/Layout";
 

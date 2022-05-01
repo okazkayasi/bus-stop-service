@@ -84,7 +84,7 @@ export function BusStopService()
 
 	function randomlyFailWith(errorMessage)
 	{
-		if ((Math.random() * 100) > 100.0)
+		if ((Math.random() * 100) > 50.0)
 		{
 			throw new Error(errorMessage);
 		}

@@ -1,9 +1,10 @@
-import BusstopPoint from "@components/BusstopPoint";
-import ClickOutside from "@lib/click-outsite";
-import Link from "next/link";
-import { donationGoalInDollars } from "pages";
 import React, { useState, useEffect } from "react";
-import { fetchPage } from "service/busstop";
+import BusstopPoint from "../BusstopPoint";
+// import BusstopPoint from "../components/BusstopPoint";
+import ClickOutside from "../../lib/click-outsite";
+import Link from "next/link";
+import { donationGoalInDollars } from "../../pages";
+import { fetchPage } from "../../service/busstop";
 
 const HomeModule = () => {
   const [busstops, setBusstops] = useState({

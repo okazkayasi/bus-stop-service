@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PaymentComponent from "@components/PaymentComponent";
+import PaymentComponent from "../PaymentComponent";
 import Link from "next/link";
-import { donationGoalInDollars } from "pages";
-import { donateToBusstop } from "service/busstop";
+import { donationGoalInDollars } from "../../pages";
+import { donateToBusstop } from "../../service/busstop";
 
 const DetailModule = ({ busstopData }) => {
   const { data, status } = busstopData;
@@ -51,7 +51,11 @@ const DetailModule = ({ busstopData }) => {
             Donations so far: ${donationRaised || 0}
           </h3>
           <h3 className="h3 text-center">
-            Donations needed: ${donationGoalInDollars}
+            Donations needed to meet the goal: $
+            {donationGoalInDollars - donationRaised}
+          </h3>
+          <h3 className="h3 text-center">
+            Total donations needed: ${donationGoalInDollars}
           </h3>
         </div>
       </div>
